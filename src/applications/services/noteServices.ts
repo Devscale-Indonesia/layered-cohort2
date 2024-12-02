@@ -1,13 +1,16 @@
 // Business Logic Layer - Services
 
-import { NoteRepositoryLocal } from "../../infrastructure/db/noteRepo.local";
-import { ILogger } from "../../infrastructure/entity/interface";
+import { ILogger, INote } from "../../infrastructure/entity/interface";
+import { injectable, inject } from "inversify";
+import { TYPES } from "../../infrastructure/entity/types";
+import "reflect-metadata";
 
+@injectable()
 export class NoteServices {
-  private noteRepo: NoteRepositoryLocal;
+  private noteRepo: INote;
   private logger: ILogger;
 
-  constructor(noteRepo: NoteRepositoryLocal, logger: ILogger) {
+  constructor(@inject(TYPES.noteRepo) noteRepo: INote, @inject(TYPES.logger) logger: ILogger) {
     this.noteRepo = noteRepo;
     this.logger = logger;
   }

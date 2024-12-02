@@ -2,11 +2,15 @@
 import { ILogger, INote } from "../entity/interface";
 import { prisma } from "../utils/prisma";
 import { Note } from "@prisma/client";
+import { injectable, inject } from "inversify";
+import "reflect-metadata";
+import { TYPES } from "../entity/types";
 
+@injectable()
 export class NoteRepositoryProd implements INote {
   private logger: ILogger;
 
-  constructor(logger: ILogger) {
+  constructor(@inject(TYPES.logger) logger: ILogger) {
     this.logger = logger;
   }
 

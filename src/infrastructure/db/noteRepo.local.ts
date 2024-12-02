@@ -1,5 +1,7 @@
 // Data Access Layer
 
+import { INote } from "../entity/interface";
+
 const noteTable: any[] = [
   { id: "1", content: "Content A" },
   { id: "2", content: "Content B" },
