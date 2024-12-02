@@ -1,11 +1,28 @@
 // Data Access Layer
+import { ILogger, INote } from "../entity/interface";
 import { prisma } from "../utils/prisma";
 import { Note } from "@prisma/client";
 
 export class NoteRepositoryProd implements INote {
+  private logger: ILogger;
+
+  constructor(logger: ILogger) {
+    this.logger = logger;
+  }
+
   async getAll() {
-    const notes = await prisma.note.findMany();
-    return notes;
+    try {
+      const notes = await prisma.note.findMany();
+      return notes;
+    } catch (error) {
+      if (error instanceof Error) {
+        this.logger.error(error.message);
+      } else {
+        this.logger.error("Error on getAll NoteRepositoryProd");
+      }
+
+      return [];
+    }
   }
 
   async getOne(id: string) {
