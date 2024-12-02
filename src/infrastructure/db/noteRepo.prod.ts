@@ -1,5 +1,5 @@
 // Data Access Layer
-import { ILogger, INote } from "../entity/interface";
+import type { ILogger, INote } from "../entity/interface";
 import { prisma } from "../utils/prisma";
 import { Note } from "@prisma/client";
 import { injectable, inject } from "inversify";

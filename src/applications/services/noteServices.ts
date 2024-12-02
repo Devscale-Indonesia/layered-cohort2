@@ -1,6 +1,6 @@
 // Business Logic Layer - Services
 
-import { ILogger, INote } from "../../infrastructure/entity/interface";
+import type { ILogger, INote } from "../../infrastructure/entity/interface";
 import { injectable, inject } from "inversify";
 import { TYPES } from "../../infrastructure/entity/types";
 import "reflect-metadata";

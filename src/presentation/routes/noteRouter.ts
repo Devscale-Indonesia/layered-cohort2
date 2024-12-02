@@ -1,4 +1,4 @@
-import { Elysia, t } from "elysia";
+import { Elysia } from "elysia";
 import { noteServices } from "../../applications/instances";
 
 export const noteRouter = new Elysia()
